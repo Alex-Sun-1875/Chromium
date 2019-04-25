@@ -2,6 +2,6 @@ namespace transform {
   callback Callback = void(DOMString result);
 
   interface Functions {
-    static void openTransformDialog(DOMString url, optional Callback callback);
+    static void openDialog(DOMString url, optional Callback callback);
   };
 };

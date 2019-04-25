@@ -4,9 +4,9 @@
 namespace extensions {
 namespace api {
 
-class TransfromFunction : public ChromeUIThreadExtensionFunction {
+class TransfromOpenDialogFunction : public ChromeUIThreadExtensionFunction {
  public:
-  DECLARE_EXTENSION_FUNCTION("transform.openTransformDialog", TRANSFORM_OPENTRANSFORMDIALOG)
+  DECLARE_EXTENSION_FUNCTION("transform.openDialog", TRANSFORM_OPENDIALOG)
 
  protected:
   ~TransfromFunction() override;

@@ -4,16 +4,16 @@
 namespace extensions {
 namespace api {
 
-TransfromFunction::~TransfromFunction() {}
+TransfromOpenDialogFunction::~TransfromOpenDialogFunction() {}
 
-ExtensionFunction::ResponseAction TransfromFunction::Run() {
-  std::unique_ptr<transform::OPENTRANSFORMDIALOG::Params> params(
-      transform::OPENTRANSFORMDIALOG::Params::Create(*args_));
+ExtensionFunction::ResponseAction TransfromOpenDialogFunction::Run() {
+  std::unique_ptr<transform::OpenDialog::Params> params(
+      transform::OpenDialog::Params::Create(*args_));
   EXTENSION_FUNCTION_VALIDATE(params.get());
 
   std::string error("hello error message");
   std::string data = std::string("hello ") + params->url;
-  std::unique_ptr<base::ListValue> result(gclxry::Hello::Results::Create(data));
+  std::unique_ptr<base::ListValue> result(transform::OpenDialog::Results::Create(data));
   if (!result)
     return RespondNow(Error(error));
 
