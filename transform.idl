@@ -1,7 +1,7 @@
+// Transform fucntion
 namespace transform {
-  callback Callback = void(DOMString result);
-
   interface Functions {
-    static void openDialog(DOMString url, optional Callback callback);
+    // open transfrom dialog
+    static void openDialog(DOMString url);
   };
 };

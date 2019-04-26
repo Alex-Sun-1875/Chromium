@@ -1,24 +1,18 @@
-#include "chrome/browser/extensions/api/transform_api.h"
-#include "chrome/common/extensions/api/transform.h"
+#include "chrome/browser/extensions/api/transform/transform_api.h"
+
+#include "extensions/browser/extension_function_registry.h"
+#include "extensions/common/extension.h"
 
 namespace extensions {
 namespace api {
 
-TransfromOpenDialogFunction::~TransfromOpenDialogFunction() {}
+TransformOpenDialogFunction::TransformOpenDialogFunction() {}
+TransformOpenDialogFunction::~TransformOpenDialogFunction() {}
 
-ExtensionFunction::ResponseAction TransfromOpenDialogFunction::Run() {
-  std::unique_ptr<transform::OpenDialog::Params> params(
-      transform::OpenDialog::Params::Create(*args_));
-  EXTENSION_FUNCTION_VALIDATE(params.get());
-
-  std::string error("hello error message");
-  std::string data = std::string("hello ") + params->url;
-  std::unique_ptr<base::ListValue> result(transform::OpenDialog::Results::Create(data));
-  if (!result)
-    return RespondNow(Error(error));
-
-  return RespondNow(ArgumentList(std::move(result)));
+bool TransformOpenDialogFunction::RunAsync() {
+  std::unique_ptr<transform::OpenDialog::Params> params(transform::OpenDialog::Params::Create(*args_));
+  return true;
 }
 
-}  // namespace api
-}  // namespace extensions
+} // namespace api
+} // namespace extensions
