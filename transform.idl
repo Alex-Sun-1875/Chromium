@@ -4,4 +4,9 @@ namespace transform {
     // open transfrom dialog
     static void openDialog(DOMString url);
   };
+
+  interface Events {
+    // This event fires when click transform pdf to word form action button
+    static void onStartTransform();
+  };
 };
