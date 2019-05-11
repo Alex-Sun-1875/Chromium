@@ -24,6 +24,30 @@ class TransformOpenDialogFunction : public ChromeAsyncExtensionFunction {
     DECLARE_EXTENSION_FUNCTION("transform.openDialog", TRANSFORM_OPENDIALOG)
 };
 
+class TransformOpenFileFunction : public ChromeAsyncExtensionFunction {
+  public:
+    TransformOpenFileFunction();
+
+  protected:
+    ~TransformOpenFileFunction();
+    bool RunAsync() override;
+
+  private:
+    DECLARE_EXTENSION_FUNCTION("transform.openFile", TRANSFORM_OPENFILE);
+};
+
+class TransformShowFileInFloderFunction : public ChromeAsyncExtensionFunction {
+public:
+  TransformShowFileInFloderFunction();
+
+protected:
+  ~TransformShowFileInFloderFunction();
+  bool RunAsync() override;
+
+private:
+  DECLARE_EXTENSION_FUNCTION("transform.showFileInFloder", TRANSFORM_SHOWFILEINFLODER);
+};
+
 class ExtensionTransformEventRouter
   : public extensions::EventRouter::Observer,
     public extensions::ExtensionRegistryObserver {

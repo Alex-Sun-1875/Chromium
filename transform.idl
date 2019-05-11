@@ -3,6 +3,10 @@ namespace transform {
   interface Functions {
     // open transfrom dialog
     static void openDialog(DOMString url);
+    // open new file
+    static void openFile();
+    // show file in folder
+    static void showFileInFloder(DOMString filename);
   };
 
   interface Events {
