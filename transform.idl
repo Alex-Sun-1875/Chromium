@@ -2,9 +2,9 @@
 namespace transform {
   interface Functions {
     // open transfrom dialog
-    static void openDialog(DOMString url);
+    static void openFileInCurrentTab();
     // open new file
-    static void openFile();
+    static void openFileInNewTab();
     // show file in folder
     static void showFileInFloder(DOMString filename);
   };

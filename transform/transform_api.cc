@@ -19,27 +19,35 @@
 namespace extensions {
 namespace api {
 
-TransformOpenDialogFunction::TransformOpenDialogFunction() {}
-TransformOpenDialogFunction::~TransformOpenDialogFunction() {}
+TransformOpenFileInCurrentTabFunction::TransformOpenFileInCurrentTabFunction() {}
+TransformOpenFileInCurrentTabFunction::~TransformOpenFileInCurrentTabFunction() {}
 
-bool TransformOpenDialogFunction::RunAsync() {
-  std::unique_ptr<transform::OpenDialog::Params> params(
-      transform::OpenDialog::Params::Create(*args_));
-  EXTENSION_FUNCTION_VALIDATE(params.get());
-
+bool TransformOpenFileInCurrentTabFunction::RunAsync() {
   Browser* browser = chrome::FindLastActive();
 
   if (browser) {
-    chrome::ExecuteCommand(browser, IDC_SHOW_DOWNLOADS);
+    browser->OpenPDFFile();
   }
 
   return true;
 }
 
-TransformOpenFileFunction::TransformOpenFileFunction() {}
-TransformOpenFileFunction::~TransformOpenFileFunction() {}
+TransformOpenFileInNewTabFunction::TransformOpenFileInNewTabFunction() {}
+TransformOpenFileInNewTabFunction::~TransformOpenFileInNewTabFunction() {}
 
-bool TransformOpenFileFunction::RunAsync() {
+bool TransformOpenFileInNewTabFunction::RunAsync() {
+  Browser* browser = chrome::FindLastActive();
+
+  if (browser) {
+    content::OpenURLParams params(
+      GURL("chrome-extension://efedgghemmklknfpfmljipnmajjgccpc/content/web/viewer.html"),
+      content::Referrer(),
+      WindowOpenDisposition::NEW_FOREGROUND_TAB,
+      ui::PAGE_TRANSITION_LINK, false);
+    browser->OpenURL(params);
+    browser->OpenPDFFile();
+  }
+
   return true;
 }
 

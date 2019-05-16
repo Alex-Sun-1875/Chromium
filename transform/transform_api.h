@@ -12,28 +12,28 @@
 namespace extensions {
 namespace api {
 
-class TransformOpenDialogFunction : public ChromeAsyncExtensionFunction {
+class TransformOpenFileInCurrentTabFunction : public ChromeAsyncExtensionFunction {
   public:
-    TransformOpenDialogFunction();
+    TransformOpenFileInCurrentTabFunction();
 
   protected:
-    ~TransformOpenDialogFunction() override;
+    ~TransformOpenFileInCurrentTabFunction() override;
     bool RunAsync() override;
 
   private:
-    DECLARE_EXTENSION_FUNCTION("transform.openDialog", TRANSFORM_OPENDIALOG)
+    DECLARE_EXTENSION_FUNCTION("transform.openFileInCurrentTab", TRANSFORM_OPENFILEINCURRENTTAB)
 };
 
-class TransformOpenFileFunction : public ChromeAsyncExtensionFunction {
+class TransformOpenFileInNewTabFunction : public ChromeAsyncExtensionFunction {
   public:
-    TransformOpenFileFunction();
+    TransformOpenFileInNewTabFunction();
 
   protected:
-    ~TransformOpenFileFunction();
+    ~TransformOpenFileInNewTabFunction() override;
     bool RunAsync() override;
 
   private:
-    DECLARE_EXTENSION_FUNCTION("transform.openFile", TRANSFORM_OPENFILE);
+    DECLARE_EXTENSION_FUNCTION("transform.openFileInNewTab", TRANSFORM_OPENFILEINNEWTAB);
 };
 
 class TransformShowFileInFloderFunction : public ChromeAsyncExtensionFunction {
@@ -41,7 +41,7 @@ public:
   TransformShowFileInFloderFunction();
 
 protected:
-  ~TransformShowFileInFloderFunction();
+  ~TransformShowFileInFloderFunction() override;
   bool RunAsync() override;
 
 private:
